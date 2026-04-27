@@ -41,7 +41,7 @@ export default async function FileDetailsPage({
         <StatusDropdown fileId={file.id} currentStatus={file.status} />
         {file.reminder_date && (
           <span className="text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
-            Reminder: {file.reminder_date}
+            תזכורת: {file.reminder_date}
           </span>
         )}
       </div>

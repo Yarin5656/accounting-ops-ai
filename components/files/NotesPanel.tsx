@@ -7,10 +7,10 @@ import type { Note } from '@/lib/types'
 function timeAgo(dateStr: string) {
   const diff = Date.now() - new Date(dateStr).getTime()
   const mins = Math.floor(diff / 60000)
-  if (mins < 60) return `${Math.max(1, mins)}m ago`
+  if (mins < 60) return `לפני ${Math.max(1, mins)} דקות`
   const hours = Math.floor(diff / 3600000)
-  if (hours < 24) return `${hours}h ago`
-  return `${Math.floor(diff / 86400000)}d ago`
+  if (hours < 24) return `לפני ${hours} שעות`
+  return `לפני ${Math.floor(diff / 86400000)} ימים`
 }
 
 export function NotesPanel({ fileId, notes }: { fileId: string; notes: Note[] }) {
@@ -34,12 +34,12 @@ export function NotesPanel({ fileId, notes }: { fileId: string; notes: Note[] })
 
   return (
     <div>
-      <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Notes</h2>
+      <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">הערות</h2>
       <div className="bg-white rounded-lg border border-slate-200 p-4 space-y-4">
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="Add an internal note..."
+          placeholder="הוסף הערה פנימית..."
           rows={3}
           className="w-full text-sm border border-slate-200 rounded-md px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
         />
@@ -48,7 +48,7 @@ export function NotesPanel({ fileId, notes }: { fileId: string; notes: Note[] })
           disabled={!body.trim() || saving}
           className="text-sm font-medium bg-slate-900 text-white px-3 py-1.5 rounded-md hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
-          {saving ? 'Saving...' : 'Add Note'}
+          {saving ? 'שומר...' : 'הוסף הערה'}
         </button>
         {notes.length > 0 && (
           <div className="border-t border-slate-100 pt-4 space-y-3">

@@ -42,12 +42,12 @@ export function StatusDropdown({
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-20 py-1 min-w-44">
+        <div className="absolute top-full right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-20 py-1 min-w-44">
           {ALL_FILE_STATUSES.map((s) => (
             <button
               key={s}
               onClick={() => changeStatus(s)}
-              className={`w-full text-left px-3 py-1.5 text-xs hover:bg-slate-50 flex items-center gap-2 ${
+              className={`w-full text-right px-3 py-1.5 text-xs hover:bg-slate-50 flex items-center gap-2 ${
                 s === currentStatus ? 'font-semibold text-slate-900' : 'text-slate-700'
               }`}
             >

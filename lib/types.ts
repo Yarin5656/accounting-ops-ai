@@ -63,19 +63,19 @@ export interface ActivityEntry {
 }
 
 export const SERVICE_TYPE_LABELS: Record<ServiceType, string> = {
-  monthly_bookkeeping: 'Monthly Bookkeeping',
-  vat_reporting: 'VAT Reporting',
-  annual_tax_return: 'Annual Tax Return',
-  company_reports: 'Company Reports',
+  monthly_bookkeeping: 'הנהלת חשבונות חודשית',
+  vat_reporting: 'דיווח מע"מ',
+  annual_tax_return: 'דוח שנתי',
+  company_reports: 'דוחות חברה',
 }
 
 export const FILE_STATUS_LABELS: Record<FileStatus, string> = {
-  new: 'New',
-  waiting_for_client: 'Waiting for Client',
-  in_review: 'In Review',
-  ready: 'Ready',
-  submitted: 'Submitted',
-  blocked: 'Blocked',
+  new: 'חדש',
+  waiting_for_client: 'ממתין ללקוח',
+  in_review: 'בבדיקה',
+  ready: 'מוכן',
+  submitted: 'הוגש',
+  blocked: 'תקוע',
 }
 
 export const FILE_STATUS_COLORS: Record<FileStatus, string> = {

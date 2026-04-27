@@ -32,31 +32,31 @@ export default async function ClientProfilePage({
       <div className="mb-6 bg-white rounded-lg border border-slate-200 px-5 py-4">
         <div className="grid grid-cols-3 gap-4 text-sm">
           <div>
-            <div className="text-xs text-slate-400 mb-1">Contact</div>
+            <div className="text-xs text-slate-400 mb-1">איש קשר</div>
             <div className="text-slate-900">{client.contact_name ?? '—'}</div>
           </div>
           <div>
-            <div className="text-xs text-slate-400 mb-1">Email</div>
+            <div className="text-xs text-slate-400 mb-1">אימייל</div>
             <div className="text-slate-900">{client.contact_email ?? '—'}</div>
           </div>
           <div>
-            <div className="text-xs text-slate-400 mb-1">Phone</div>
+            <div className="text-xs text-slate-400 mb-1">טלפון</div>
             <div className="text-slate-900">{client.contact_phone ?? '—'}</div>
           </div>
         </div>
       </div>
 
-      <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Files</h2>
+      <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">תיקים</h2>
       <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
         {!files || files.length === 0 ? (
-          <div className="px-6 py-10 text-center text-slate-400 text-sm">No files yet.</div>
+          <div className="px-6 py-10 text-center text-slate-400 text-sm">אין תיקים עדיין.</div>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Service</th>
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Period</th>
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Status</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">שירות</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">תקופה</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">סטטוס</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">

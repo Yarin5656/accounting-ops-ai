@@ -5,13 +5,13 @@ function formatEvent(entry: ActivityEntry): string {
   const p = entry.payload
   switch (entry.event_type) {
     case 'file_created':
-      return 'File opened'
+      return 'תיק נפתח'
     case 'status_change':
-      return `Status: ${FILE_STATUS_LABELS[p.from as keyof typeof FILE_STATUS_LABELS] ?? p.from} → ${FILE_STATUS_LABELS[p.to as keyof typeof FILE_STATUS_LABELS] ?? p.to}`
+      return `סטטוס: ${FILE_STATUS_LABELS[p.from as keyof typeof FILE_STATUS_LABELS] ?? p.from} ← ${FILE_STATUS_LABELS[p.to as keyof typeof FILE_STATUS_LABELS] ?? p.to}`
     case 'document_received':
-      return `Received: ${p.label}`
+      return `התקבל: ${p.label}`
     case 'note_added':
-      return `Note: "${p.preview}${p.preview?.length >= 60 ? '...' : ''}"`
+      return `הערה: "${p.preview}${p.preview?.length >= 60 ? '...' : ''}"`
     default:
       return entry.event_type.replace(/_/g, ' ')
   }
@@ -20,19 +20,19 @@ function formatEvent(entry: ActivityEntry): string {
 function timeAgo(dateStr: string) {
   const diff = Date.now() - new Date(dateStr).getTime()
   const days = Math.floor(diff / 86400000)
-  if (days === 0) return 'today'
-  if (days === 1) return '1d ago'
-  return `${days}d ago`
+  if (days === 0) return 'היום'
+  if (days === 1) return 'אתמול'
+  return `לפני ${days} ימים`
 }
 
 export function ActivityLog({ entries }: { entries: ActivityEntry[] }) {
   const sorted = [...entries].reverse()
   return (
     <div>
-      <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Activity</h2>
+      <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">פעילות</h2>
       <div className="bg-white rounded-lg border border-slate-200 divide-y divide-slate-100">
         {sorted.length === 0 ? (
-          <div className="px-4 py-6 text-center text-slate-400 text-sm">No activity yet.</div>
+          <div className="px-4 py-6 text-center text-slate-400 text-sm">אין פעילות עדיין.</div>
         ) : (
           sorted.map((entry) => (
             <div key={entry.id} className="flex items-start justify-between px-4 py-2.5 gap-4">

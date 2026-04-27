@@ -16,9 +16,9 @@ const STATUS_STYLE: Record<DocumentStatus, string> = {
 }
 
 const STATUS_LABEL: Record<DocumentStatus, string> = {
-  missing: 'Missing',
-  received: 'Received',
-  not_required: 'N/A',
+  missing: 'חסר',
+  received: 'התקבל',
+  not_required: 'לא רלוונטי',
 }
 
 export function DocumentChecklist({ items }: { items: DocumentItem[] }) {
@@ -46,16 +46,16 @@ export function DocumentChecklist({ items }: { items: DocumentItem[] }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Documents</h2>
+        <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wide">מסמכים</h2>
         {missingCount > 0 && (
           <span className="text-xs font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-            {missingCount} missing
+            {missingCount} חסרים
           </span>
         )}
       </div>
       <div className="bg-white rounded-lg border border-slate-200 divide-y divide-slate-100">
         {items.length === 0 && (
-          <div className="px-4 py-8 text-center text-slate-400 text-sm">No documents.</div>
+          <div className="px-4 py-8 text-center text-slate-400 text-sm">אין מסמכים.</div>
         )}
         {sorted.map((item) => (
           <div key={item.id} className="flex items-center justify-between px-4 py-2.5">
@@ -66,7 +66,7 @@ export function DocumentChecklist({ items }: { items: DocumentItem[] }) {
             </span>
             <button
               onClick={() => toggleStatus(item)}
-              className={`text-xs font-medium px-2 py-0.5 rounded border cursor-pointer transition-colors shrink-0 ml-4 ${STATUS_STYLE[item.status]}`}
+              className={`text-xs font-medium px-2 py-0.5 rounded border cursor-pointer transition-colors shrink-0 mr-4 ${STATUS_STYLE[item.status]}`}
             >
               {STATUS_LABEL[item.status]}
             </button>

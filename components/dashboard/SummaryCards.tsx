@@ -1,10 +1,10 @@
 import type { ClientFile, FileStatus } from '@/lib/types'
 
 const CARDS: { status: FileStatus; label: string; accent: string }[] = [
-  { status: 'blocked', label: 'Blocked', accent: 'border-l-red-500' },
-  { status: 'waiting_for_client', label: 'Waiting for Client', accent: 'border-l-amber-500' },
-  { status: 'in_review', label: 'In Review', accent: 'border-l-blue-500' },
-  { status: 'ready', label: 'Ready', accent: 'border-l-green-500' },
+  { status: 'blocked', label: 'תקועים', accent: 'border-r-red-500' },
+  { status: 'waiting_for_client', label: 'ממתינים ללקוח', accent: 'border-r-amber-500' },
+  { status: 'in_review', label: 'בבדיקה', accent: 'border-r-blue-500' },
+  { status: 'ready', label: 'מוכנים', accent: 'border-r-green-500' },
 ]
 
 export function SummaryCards({ files }: { files: ClientFile[] }) {
@@ -15,7 +15,7 @@ export function SummaryCards({ files }: { files: ClientFile[] }) {
         return (
           <div
             key={status}
-            className={`bg-white rounded-lg border border-slate-200 border-l-4 ${accent} px-4 py-3`}
+            className={`bg-white rounded-lg border border-slate-200 border-r-4 ${accent} px-4 py-3`}
           >
             <div className="text-2xl font-bold text-slate-900">{count}</div>
             <div className="text-sm text-slate-500 mt-0.5">{label}</div>

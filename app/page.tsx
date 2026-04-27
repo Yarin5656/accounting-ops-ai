@@ -33,7 +33,7 @@ export default async function DashboardPage() {
   const files = await getOpenFiles()
 
   return (
-    <PageShell title="Dashboard">
+    <PageShell title="לוח בקרה">
       <SummaryCards files={files} />
       <FileTable files={files} />
     </PageShell>

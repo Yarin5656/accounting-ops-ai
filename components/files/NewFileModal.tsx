@@ -58,7 +58,7 @@ export function NewFileModal({ clientId }: { clientId: string }) {
         onClick={() => setOpen(true)}
         className="text-sm font-medium bg-slate-900 text-white px-3 py-1.5 rounded-md hover:bg-slate-700 transition-colors"
       >
-        + New File
+        + תיק חדש
       </button>
 
       {open && (
@@ -67,11 +67,11 @@ export function NewFileModal({ clientId }: { clientId: string }) {
           onClick={(e) => { if (e.target === e.currentTarget) setOpen(false) }}
         >
           <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm mx-4">
-            <h2 className="text-base font-semibold text-slate-900 mb-4">New File</h2>
+            <h2 className="text-base font-semibold text-slate-900 mb-4">תיק חדש</h2>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-600 mb-1">Service Type</label>
+                <label className="block text-xs font-medium text-slate-600 mb-1">סוג שירות</label>
                 <select
                   value={serviceType}
                   onChange={(e) => setServiceType(e.target.value as ServiceType)}
@@ -84,12 +84,12 @@ export function NewFileModal({ clientId }: { clientId: string }) {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-600 mb-1">Period</label>
+                <label className="block text-xs font-medium text-slate-600 mb-1">תקופה</label>
                 <input
                   type="text"
                   value={periodLabel}
                   onChange={(e) => setPeriodLabel(e.target.value)}
-                  placeholder="e.g. March 2025 or Q1 2025"
+                  placeholder="לדוגמה: מרץ 2025 או Q1 2025"
                   className="w-full text-sm border border-slate-200 rounded-md px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -100,14 +100,14 @@ export function NewFileModal({ clientId }: { clientId: string }) {
                 onClick={() => setOpen(false)}
                 className="flex-1 text-sm font-medium text-slate-600 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors"
               >
-                Cancel
+                ביטול
               </button>
               <button
                 onClick={createFile}
                 disabled={!periodLabel.trim() || saving}
                 className="flex-1 text-sm font-medium bg-slate-900 text-white px-3 py-1.5 rounded-md hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
-                {saving ? 'Creating...' : 'Create'}
+                {saving ? 'יוצר...' : 'צור תיק'}
               </button>
             </div>
           </div>

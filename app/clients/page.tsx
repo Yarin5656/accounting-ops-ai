@@ -29,18 +29,18 @@ export default async function ClientsPage() {
   const clients = await getClients()
 
   return (
-    <PageShell title="Clients">
+    <PageShell title="לקוחות">
       <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
         {clients.length === 0 ? (
-          <div className="px-6 py-12 text-center text-slate-400 text-sm">No clients yet.</div>
+          <div className="px-6 py-12 text-center text-slate-400 text-sm">אין לקוחות עדיין.</div>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Name</th>
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Contact</th>
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Email</th>
-                <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Open Files</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">שם</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">איש קשר</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">אימייל</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">תיקים פתוחים</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">

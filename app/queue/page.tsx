@@ -4,10 +4,10 @@ import { FileTable } from '@/components/dashboard/FileTable'
 import type { ClientFile, FileStatus } from '@/lib/types'
 
 const TABS: { value: string; label: string }[] = [
-  { value: 'all', label: 'All Open' },
-  { value: 'blocked', label: 'Blocked' },
-  { value: 'waiting_for_client', label: 'Waiting for Client' },
-  { value: 'in_review', label: 'In Review' },
+  { value: 'all', label: 'כל הפתוחים' },
+  { value: 'blocked', label: 'תקועים' },
+  { value: 'waiting_for_client', label: 'ממתינים ללקוח' },
+  { value: 'in_review', label: 'בבדיקה' },
 ]
 
 async function getFiles(status?: string): Promise<ClientFile[]> {
@@ -51,7 +51,7 @@ export default async function QueuePage({
   const files = await getFiles(active)
 
   return (
-    <PageShell title="Queue">
+    <PageShell title="תור משימות">
       <div className="flex gap-2 mb-5 flex-wrap">
         {TABS.map((tab) => (
           <a

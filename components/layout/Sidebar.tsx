@@ -4,9 +4,9 @@ import { usePathname } from 'next/navigation'
 import { LayoutDashboard, Users, ListTodo } from 'lucide-react'
 
 const nav = [
-  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/clients', label: 'Clients', icon: Users },
-  { href: '/queue', label: 'Queue', icon: ListTodo },
+  { href: '/', label: 'לוח בקרה', icon: LayoutDashboard },
+  { href: '/clients', label: 'לקוחות', icon: Users },
+  { href: '/queue', label: 'תור משימות', icon: ListTodo },
 ]
 
 export function Sidebar() {
