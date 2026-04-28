@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase'
+import { createServerSupabase } from '@/lib/supabase-server'
 import { PageShell } from '@/components/layout/PageShell'
 import { FileTable } from '@/components/dashboard/FileTable'
 import type { ClientFile, FileStatus } from '@/lib/types'
@@ -11,6 +11,8 @@ const TABS: { value: string; label: string }[] = [
 ]
 
 async function getFiles(status?: string): Promise<ClientFile[]> {
+  const supabase = await createServerSupabase()
+
   let query = supabase
     .from('client_files')
     .select('*, client:clients(id, name)')
@@ -57,7 +59,7 @@ export default async function QueuePage({
           <a
             key={tab.value}
             href={tab.value === 'all' ? '/queue' : `/queue?status=${tab.value}`}
-            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 ${
               active === tab.value
                 ? 'bg-slate-900 text-white'
                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'

@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase'
+import { createServerSupabase } from '@/lib/supabase-server'
 import { PageShell } from '@/components/layout/PageShell'
 import { StatusBadge } from '@/components/files/StatusBadge'
 import { NewFileModal } from '@/components/files/NewFileModal'
@@ -12,6 +12,7 @@ export default async function ClientProfilePage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
+  const supabase = await createServerSupabase()
 
   const { data: client } = await supabase
     .from('clients')
@@ -63,7 +64,7 @@ export default async function ClientProfilePage({
               {files.map((file) => (
                 <tr key={file.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-4 py-3 font-medium text-slate-900">
-                    <Link href={`/files/${file.id}`} className="hover:text-blue-600">
+                    <Link href={`/files/${file.id}`} className="hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 rounded">
                       {SERVICE_TYPE_LABELS[file.service_type as keyof typeof SERVICE_TYPE_LABELS]}
                     </Link>
                   </td>

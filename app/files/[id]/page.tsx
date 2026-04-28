@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase'
+import { createServerSupabase } from '@/lib/supabase-server'
 import { PageShell } from '@/components/layout/PageShell'
 import { StatusDropdown } from '@/components/files/StatusDropdown'
 import { DocumentChecklist } from '@/components/files/DocumentChecklist'
@@ -14,6 +14,7 @@ export default async function FileDetailsPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
+  const supabase = await createServerSupabase()
 
   const [{ data: file }, { data: docs }, { data: notes }, { data: activity }] = await Promise.all([
     supabase.from('client_files').select('*, client:clients(id, name)').eq('id', id).single(),
@@ -30,7 +31,7 @@ export default async function FileDetailsPage({
   return (
     <PageShell title={`${client?.name ?? '—'} — ${serviceLabel}`}>
       <div className="mb-1 text-sm text-slate-500">
-        <Link href={`/clients/${file.client_id}`} className="hover:text-blue-600">
+        <Link href={`/clients/${file.client_id}`} className="hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 rounded">
           {client?.name}
         </Link>
         {' / '}

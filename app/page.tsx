@@ -1,10 +1,12 @@
-import { supabase } from '@/lib/supabase'
+import { createServerSupabase } from '@/lib/supabase-server'
 import { PageShell } from '@/components/layout/PageShell'
 import { SummaryCards } from '@/components/dashboard/SummaryCards'
 import { FileTable } from '@/components/dashboard/FileTable'
 import type { ClientFile } from '@/lib/types'
 
 async function getOpenFiles(): Promise<ClientFile[]> {
+  const supabase = await createServerSupabase()
+
   const { data: files } = await supabase
     .from('client_files')
     .select('*, client:clients(id, name)')

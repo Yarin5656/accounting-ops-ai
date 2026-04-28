@@ -1,9 +1,11 @@
-import { supabase } from '@/lib/supabase'
+import { createServerSupabase } from '@/lib/supabase-server'
 import { PageShell } from '@/components/layout/PageShell'
 import Link from 'next/link'
 import type { Client } from '@/lib/types'
 
 async function getClients(): Promise<(Client & { file_count: number })[]> {
+  const supabase = await createServerSupabase()
+
   const { data: clients } = await supabase
     .from('clients')
     .select('*')
@@ -47,7 +49,7 @@ export default async function ClientsPage() {
               {clients.map((client) => (
                 <tr key={client.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-4 py-3 font-medium text-slate-900">
-                    <Link href={`/clients/${client.id}`} className="hover:text-blue-600">
+                    <Link href={`/clients/${client.id}`} className="hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 rounded">
                       {client.name}
                     </Link>
                   </td>
