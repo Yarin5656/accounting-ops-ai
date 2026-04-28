@@ -28,13 +28,14 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   const isAuthRoute = pathname.startsWith('/auth')
+  const isPublic = pathname === '/'
 
-  if (!user && !isAuthRoute) {
+  if (!user && !isAuthRoute && !isPublic) {
     return NextResponse.redirect(new URL('/auth/login', request.url))
   }
 
   if (user && pathname === '/auth/login') {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
   return response

@@ -5,7 +5,7 @@ import { LayoutDashboard, Users, ListTodo, LogOut } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 
 const nav = [
-  { href: '/', label: 'לוח בקרה', icon: LayoutDashboard },
+  { href: '/dashboard', label: 'לוח בקרה', icon: LayoutDashboard },
   { href: '/clients', label: 'לקוחות', icon: Users },
   { href: '/queue', label: 'תור משימות', icon: ListTodo },
 ]
